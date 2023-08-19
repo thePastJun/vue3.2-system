@@ -4,7 +4,7 @@ import {createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { createRouterGuards } from './router-guards';
 
 
-const modules = import.meta.globEager('./modules/**/*.ts');
+const modules = import.meta.glob('./modules/**/*.ts');
 
 const routeModuleList: RouteRecordRaw[] = [];
 

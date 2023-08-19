@@ -1,5 +1,5 @@
 //获取相关CSS属性
-const getCss = function (o, key) {
+const getCss = function (o: Element, key: string) {
   return o.currentStyle
     ? o.currentStyle[key]
     : document.defaultView?.getComputedStyle(o, null)[key];
@@ -13,7 +13,7 @@ const params = {
   flag: false,
 };
 
-const startDrag = function (bar, target, callback?) {
+const startDrag = function (bar: { onmousedown: (event: any) => void; onselectstart: () => boolean; }, target: { offsetWidth: any; offsetHeight: any; offsetLeft: any; offsetTop: any; style: { left: string; top: string; }; }, callback?: (arg0: number, arg1: number) => void) {
   const screenWidth = document.body.clientWidth; // body当前宽度
   const screenHeight = document.documentElement.clientHeight; // 可见区域高度
 
@@ -34,7 +34,7 @@ const startDrag = function (bar, target, callback?) {
   }
 
   //o是移动对象
-  bar.onmousedown = function (event) {
+  bar.onmousedown = function (event: Event | undefined) {
     params.flag = true;
     if (!event) {
       event = window.event;

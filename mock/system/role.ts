@@ -2,7 +2,7 @@ import { resultSuccess, doCustomTimes } from '../_util';
 
 function getMenuKeys() {
   const keys = ['dashboard', 'console', 'workplace', 'basic-form', 'step-form', 'detail'];
-  const newKeys = [];
+  const newKeys: any = [];
   doCustomTimes(parseInt(Math.random() * 6), () => {
     const key = keys[Math.floor(Math.random() * keys.length)];
     newKeys.push(key);
@@ -10,7 +10,7 @@ function getMenuKeys() {
   return Array.from(new Set(newKeys));
 }
 
-const roleList = (pageSize) => {
+const roleList = (pageSize: number) => {
   const result: any[] = [];
   doCustomTimes(pageSize, () => {
     result.push({
@@ -31,7 +31,7 @@ export default [
     url: '/api/role/list',
     timeout: 1000,
     method: 'get',
-    response: ({ query }) => {
+    response:  (query:any) => {
       const { page = 1, pageSize = 10 } = query;
       const list = roleList(Number(pageSize));
       return resultSuccess({
